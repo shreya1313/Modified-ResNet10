@@ -83,6 +83,17 @@ criterion = criterion.to(device)
 
 
 def calculate_accuracy(y_pred, y):
+    """
+    Calculates the accuracy of predictions given a predicted output tensor and ground truth tensor.
+
+    Args:
+        y_pred (torch.Tensor): The predicted output tensor, with shape (batch_size, num_classes).
+        y (torch.Tensor): The ground truth tensor, with shape (batch_size,).
+
+    Returns:
+        float: The accuracy of the predictions as a float value between 0 and 1.
+
+    """
     top_pred = y_pred.argmax(1, keepdim = True)
     correct = top_pred.eq(y.view_as(top_pred)).sum()
     acc = correct.float() / y.shape[0]
@@ -90,7 +101,20 @@ def calculate_accuracy(y_pred, y):
 
 
 def train(model, iterator, optimizer, criterion, device):
-    
+    """
+    Trains a PyTorch model for one epoch given an iterator of data, an optimizer, a loss criterion, and a device.
+
+    Args:
+        model (nn.Module): The PyTorch model to train.
+        iterator (DataLoader): The iterator of data to use for training.
+        optimizer (torch.optim.Optimizer): The optimizer to use for training.
+        criterion (nn.Module): The loss criterion to use for training.
+        device (str): The device to use for training, either 'cpu' or 'cuda'.
+
+    Returns:
+        tuple: A tuple of floats representing the average epoch loss and epoch accuracy, respectively.
+
+    """
     epoch_loss = 0
     epoch_acc = 0
     
@@ -120,7 +144,19 @@ def train(model, iterator, optimizer, criterion, device):
 
 
 def evaluate(model, iterator, criterion, device):
-    
+    """
+    Evaluates a PyTorch model on a given iterator of data using a loss criterion and device.
+
+    Args:
+        model (nn.Module): The PyTorch model to evaluate.
+        iterator (DataLoader): The iterator of data to use for evaluation.
+        criterion (nn.Module): The loss criterion to use for evaluation.
+        device (str): The device to use for evaluation, either 'cpu' or 'cuda'.
+
+    Returns:
+        tuple: A tuple of floats representing the average epoch loss and epoch accuracy, respectively.
+
+    """
     epoch_loss = 0
     epoch_acc = 0
     
@@ -146,12 +182,28 @@ def evaluate(model, iterator, criterion, device):
 
 
 
-def update_lr(optimizer, lr):    
+def update_lr(optimizer, lr): 
+    """
+    Updates the learning rate of a given PyTorch optimizer.
+
+    Args:
+        optimizer (torch.optim.Optimizer): The PyTorch optimizer to update.
+        lr (float): The new learning rate to set for the optimizer.
+
+    """
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
 
 def save_to_excel(data, table_name):
+    """
+    Saves a dictionary of data to an Excel file with the given table name.
+
+    Args:
+        data (dict): The dictionary of data to save to an Excel file.
+        table_name (str): The name to use for the Excel table.
+
+    """
   df = pd.DataFrame(data=data)
   df = df.T
 
@@ -160,7 +212,21 @@ def save_to_excel(data, table_name):
 
 
 def run_exp(model, optimizer, learning_rate, curr_lr, table_name = '', EPOCHS = 50):
+    """
+    Runs a training and evaluation loop for a given PyTorch model, using the specified optimizer and learning rate.
 
+    Args:
+        model (torch.nn.Module): The PyTorch model to train and evaluate.
+        optimizer (torch.optim.Optimizer): The PyTorch optimizer to use for training.
+        learning_rate (float): The initial learning rate to use for the optimizer.
+        curr_lr (float): The current learning rate being used for the optimizer.
+        table_name (str, optional): The name to use for the results table in the Excel file. Defaults to an empty string.
+        EPOCHS (int, optional): The number of epochs to train the model for. Defaults to 50.
+
+    Returns:
+        tuple: A tuple containing the training losses, validation losses, and validation accuracies as lists.
+
+    """
   max_validation_accuracy = 0
   train_losses = []
   valid_losses = []
@@ -192,6 +258,16 @@ def run_exp(model, optimizer, learning_rate, curr_lr, table_name = '', EPOCHS = 
 
 
 def run():
+    """
+    Train and evaluate ResNet models with different hyperparameters.
+
+    For each combination of learning rate and optimizer, this function trains ResNet10, ResNet18, ResNet12, ResNet14_4, and
+    ResNet14_5 models and saves the weights to a file named 'resnet<depth>_<optimizer>_<learning_rate>.ckpt', where <depth>
+    is the depth of the ResNet model. Then, it evaluates the models on the test set and saves the test loss and accuracy
+    to an Excel file named 'resnet<depth>_<optimizer>_<learning_rate>_acc.xlsx'. Finally, it prints the test loss,
+    test accuracy, and the name of the model that was evaluated.
+
+    """
   learning_rate = [0.1, 0.01, 0.001]
   optimizers = ['Adam', 'SGD', 'AdaDelta']
   for lr in learning_rate:
