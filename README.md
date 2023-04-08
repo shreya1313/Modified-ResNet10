@@ -18,7 +18,7 @@
 - `main_job.sbatch` - slurm job for running `gridsearch.py` on clsuters.
 - `main_output` - output after running the slurm job.
 - `resnet10.ipynb` - contains code for the most accurate model. 
-- `arc.png` - our model architecture
+- `arc.png` - model architecture
 
 
 ## Authors
