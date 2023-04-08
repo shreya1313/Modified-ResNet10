@@ -13,8 +13,12 @@
 
 - `models/` 
   - `.py` files - contains all the model architecture we experimented on using grid search, hyperparameters were tuned, and configurations were employed. 
-  - `.ipynb` - contains code for running all the models (total - 45 models) for different Learning rates and optimizers. 
-- `ResNet_on_CIFAR10_mod.ipynb` - contains code for the most accurate model. 
+- `resnet10.ipynb` - contains code for running all the models (total - 45 models) for different Learning rates and optimizers. 
+- `besthyperparams.json` - Hyperparameters for the best model.
+- `gridsearch.py` - python script to train all the models present in `./models`, with all combinations of specified hyperparameters. It trains 45 models in total. 5 resnet variations with 9 combinations of hyperparameters each.
+- `main_job.sbatch` - slurm job for running `gridsearch.py` on clsuters.
+- `main_output` - output after running the slurm job.
+- `resnet10.ipynb` - contains code for the most accurate model. 
 - `arc.png` - our model architecture
 
 
