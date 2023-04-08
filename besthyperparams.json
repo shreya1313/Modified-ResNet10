@@ -1,0 +1,8 @@
+{
+    "model_architecture": "ResNet-10",
+    "num_parameters": "4.98M",
+    "optimizer": "SGD",
+    "learning_rate": 0.001,
+    "scheduler": "OneCycleLR",
+    "max_validation_accuracy": "93.54%"
+}
