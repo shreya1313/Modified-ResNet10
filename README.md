@@ -11,8 +11,10 @@
 
 ## Repository Structure
 
-`models/` - contains all the model architecture we experimented on using grid search, hyperparameters were tuned, and configurations were employed. 
-`ResNet_on_CIFAR10_mod.ipynb` - contains code for the most accurate model.
+`models/` \\
+  - `.py` files - contains all the model architecture we experimented on using grid search, hyperparameters were tuned, and configurations were employed. \\
+  - `.ipynb` - contains code for running all the models (total - 45 models) for different Learning rates and optimizers. \\ 
+`ResNet_on_CIFAR10_mod.ipynb` - contains code for the most accurate model. \\
 `arc.png` - our model architecture
 
 
