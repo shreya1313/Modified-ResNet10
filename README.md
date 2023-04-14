@@ -21,6 +21,9 @@
 - `resnet_model_93.54.ckpt` - checkpoint of the most accurate model. 
 - `arc.png` - model architecture
 
+## How to run
+- Run the cells of the file `resnet10.ipynb`
+
 ## Results
 
 | Model Architecture  | # of Blocks | # of Out Channels | # of Parameters | Optimizer | Learning Rate | Scheduler | Test Accuracy |
@@ -32,6 +35,8 @@
 | ResNet-14-5 | [2,3,3,1,1] | [16, 32, 64, 128, 512] | 4.13M | SGD | 0.1 | LR decay | 89.45% |
 | ResNet-18 | [2,2,2,2] | [64,128,256,512] | 11.17M | Adam | 0.001 | LR decay |92.98% |
 
+## Documentation
+- Project report can be found at [docs/project_report.pdf](<add link>)
 
 ## Authors
 - Arushi Arora: aa10350@nyu.edu
