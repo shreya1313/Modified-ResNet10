@@ -36,7 +36,7 @@
 | ResNet-18 | [2,2,2,2] | [64,128,256,512] | 11.17M | Adam | 0.001 | LR decay |92.98% |
 
 ## Documentation
-- Project report can be found at [docs/project_report.pdf](<add link>)
+- Project report can be found at [docs/Report.pdf](https://github.com/shreya1313/Deep-Learning-Mini-Project/blob/main/docs/Report.pdf)
 
 ## Authors
 - Arushi Arora: aa10350@nyu.edu
